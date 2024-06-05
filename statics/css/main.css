@@ -2941,6 +2941,8 @@ body.mobile-nav-active #mobile-nav-toggle {
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
+  max-height: 150px;
+  max-width: 50vw;
 }
 
 .recent-blog-area .single-recent-blog-post .tags {
@@ -3655,7 +3657,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .widget-wrap .popular-post-widget .popular-post-list .thumb img {
-  width: 100%;
+  max-width: 100px;
 }
 
 .widget-wrap .popular-post-widget .single-post-list {

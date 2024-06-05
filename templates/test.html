@@ -1,12 +1,16 @@
+{% load blog_tags %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Test Page</title>
 </head>
 <body>
-    {{post.title}}   
-    {{post.content}}   
+    <h1>Testing Page</h1>
+    <p>test: </p>
+    {% hello as p%}
+    {{p}}
 </body>
 </html>
