@@ -4496,3 +4496,9 @@ body.mobile-nav-active #mobile-nav-toggle {
 .footer-text a, .footer-text i {
   color: #f8b600;
 }
+
+.notification{
+  position: absolute;
+  top: 5rem;
+  right: 1rem;
+}

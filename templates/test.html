@@ -1,5 +1,5 @@
 {% load blog_tags %}
-
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,9 +8,10 @@
     <title>Test Page</title>
 </head>
 <body>
-    <h1>Testing Page</h1>
-    <p>test: </p>
-    {% hello as p%}
-    {{p}}
+    <form method="POST" action="{% url 'website:test' %}"> {% csrf_token %}
+        {% comment %} {{form.as_p}} {% endcomment %}
+        {{form.as_p}}
+        <button type='submit'>Submit</button>
+    </form>
 </body>
 </html>

@@ -2,12 +2,14 @@ from django.shortcuts import render, get_object_or_404
 from blog.models import Post
 from django.http import HttpResponse
 from django.db.models import Q
+from django.utils import timezone
 from django.core.paginator import Paginator
 
 # Create your views here.
 
 def blog_view(request, **kwargs):
-    posts = Post.objects.filter(status=1)
+    posts = Post.objects.filter(published_date__lte=timezone.now(),status=1)
+
     if kwargs.get('cat_name'):
         posts = posts.filter(category__name=kwargs['cat_name'])
         
