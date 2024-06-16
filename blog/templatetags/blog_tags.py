@@ -1,5 +1,6 @@
 from django import template
-from blog.models import Post, Category
+from blog.models import Post, Category, Comment
+from django.shortcuts import get_object_or_404
 
 register = template.Library()
 
@@ -14,6 +15,11 @@ def function():
     posts = Post.objects.filter(status=1)
     return posts
 
+@register.simple_tag(name='comments_count')
+def function(pid):
+    comments = Comment.objects.filter(post=pid, approved=True).count()
+    return comments
+    
 @register.filter()
 def snippet(value, arg=20):
     return value[:arg] + "..."
