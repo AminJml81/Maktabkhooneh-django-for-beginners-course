@@ -141,14 +141,22 @@
 							<div class="comment-form">
 								<h4>Leave a Comment</h4>
 								<form method="POST" action="{% url 'blog:single' post.id %}">  {% csrf_token %}
-									
 									<div class="form-group form-inline">
-									  <div class="form-group col-lg-6 col-md-12 name">
-									    <input type="text" class="form-control" name="name" placeholder="Enter Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'">
-									  </div>
-									  <div class="form-group col-lg-6 col-md-12 email">
-									    <input type="email" class="form-control" name="email" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
-									  </div>										
+										{% if user.is_authenticated %}
+										<div class="form-group col-lg-6 col-md-12 name">
+											<input type="hidden" value={{user.first_name}} class="form-control" name="name" placeholder="Enter Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'">
+										</div>
+										<div class="form-group col-lg-6 col-md-12 email">
+											<input type="hidden" value={{user.email}} class="form-control" name="email" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
+										</div>
+										{%else%}
+										<div class="form-group col-lg-6 col-md-12 name">
+										  <input type="text" class="form-control" name="name" placeholder="Enter Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'">
+										</div>
+										<div class="form-group col-lg-6 col-md-12 email">
+										  <input type="email" class="form-control" name="email" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
+										</div>
+										{% endif %}										
 									</div>
 									<div class="form-group">
 										<input type="text" class="form-control" name="subject" placeholder="Subject" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Subject'">
